@@ -8,14 +8,6 @@
 import sys
 import re
 
-'''
-import sys
-import re
-
-with open('Triga.out') as fh:
-    d = fh.read()
-'''
-
 # Read input file
 try:
     mcnp_outfile = sys.argv[1]
