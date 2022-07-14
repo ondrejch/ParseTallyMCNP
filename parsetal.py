@@ -3,8 +3,7 @@
 # Parse tallies out of an MCNP output file
 #
 # Ondrej Chvala, ondrejch@gmail.com
-# GNU/GPL
-#
+# MIT license
 
 import sys
 import re
