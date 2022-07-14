@@ -41,7 +41,7 @@ for tname in tallies:
     xaxis  = tparse[0][0]
     with open(f'mytally_{tname}.dat', 'w') as of:
         print('Writing tally ', tname)
-        of.write(f'# TALLY fnane, x-axis: {xaxis}, y-units: {tunits}\n')
+        of.write(f'# TALLY {tname}, x-axis: {xaxis}, y-units: {tunits}\n')
         of.write(tparse[0][1])
         of.close()
 
