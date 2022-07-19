@@ -32,11 +32,15 @@ for tname in tallies:
         tdata = tmatch[0]
     elif len(tmatch) == 0:
         print('No results for tally ',tname,'. Please check')
-        break
+        continue
     else:
         print('ERROR - This should not happen')
         sys.exit(-3)
-    tunits = re.findall('units\s+([a-zA-Z0-9_/\*]+)', tdata)[0]
+    tmatch = re.findall('units\s+([a-zA-Z0-9_/\*]+)', tdata)
+    if tmatch == []:
+        print("Skipping tally ",tname)
+        continue
+    tunits = tmatch[0]
     tparse = re.findall('\n\s+(\w+)\s+\n([\s+[\d,.,E,+,-]+\s+[\d,.,E,+,-]+\s+[\d,.,E,+,-]+\n)+', tdata)
     xaxis  = tparse[0][0]
     with open(f'mytally_{tname}.dat', 'w') as of:
