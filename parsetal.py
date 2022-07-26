@@ -7,6 +7,7 @@
 
 import sys
 import re
+import math
 
 # Read input file
 try:
@@ -46,6 +47,20 @@ for tname in tallies:
     with open(f'mytally_{tname}.dat', 'w') as of:
         print('Writing tally ', tname)
         of.write(f'# TALLY {tname}, x-axis: {xaxis}, y-units: {tunits}\n')
-        of.write(tparse[0][1])
+        of.write(f'# x  y   relsigma(y)     y/dx     y/du\n')
+        #of.write(tparse[0][1])
+        x0:float =  0.0
+        for line in tparse[0][1].splitlines():
+            (x, y, yerr) = line.split()
+            x1 = float(x)
+            dx = x1 - x0
+            yperdx = float(y)/dx        # flux per bin width
+            if x0 > 0:
+                du = math.log(x1/x0)
+                yperdu = float(y)/du    # flux per lethargy
+            else:
+                yperdu = 'NaN'
+            of.write(f"{x} {y} {yerr} {yperdx} {yperdu}\n")
+            x0 = x1
         of.close()
 
