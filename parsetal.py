@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 #
-# Parse tallies out of an MCNP output file
-#
+# Parse tallies out of an MCNP output file into 5 columns,
+# <x> <y> <rel_sigma_y> <y/dx> <y/d-lethargy>
+# 
 # Ondrej Chvala, ondrejch@gmail.com
 # MIT license
 
