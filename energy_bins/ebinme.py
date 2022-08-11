@@ -7,10 +7,19 @@
 #
 
 import numpy as np
+import sys
+
+Nbins  = 500   # number of nins
+mybins = 0
+try:
+    mybins = int(sys.argv[1])
+except:
+    pass
+if mybins > 0:
+    Nbins = mybins
 
 expEmin = -10   # 10E{expEmin} MeV
 expEmax =  2    # 10E{expEmax] MeV
-Nbins = 10000   # number of nins
 
 e_per_line = 6  # records per line
 
