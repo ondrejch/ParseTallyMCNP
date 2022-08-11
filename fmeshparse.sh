@@ -7,11 +7,11 @@
 # MIT license
 
 TALLYFILE=meshtally.out     # name out the FMESH tally file
-GNUPLOTFILE=plotme.gnu      # name of the gnuplot script
+GNUPLOTFILE=fmeshplots.gnu  # name of the gnuplot script
 XOFFSET=80                  # X-offset of the tally
 
-#tmpdir=$(mktemp -d)
-tmpdir=tmp
+tmpdir=$(mktemp -d)
+# tmpdir=tmp
 # keys=$(sed -e '1,/Energy         R         Z         Th    Result     Rel Error/d' meshtally.out | awk '{print $1}' | uniq)
 
 cat << EOF1 > $GNUPLOTFILE
@@ -25,7 +25,7 @@ set ylabel  "neutron flux [n/(cm^2 s)]"
 #set term pngcairo enh font "Ariel,24" size 1920, 1200
 set term pdf enh
 #font "Ariel,24" size 1920, 1200
-set out "plots.pdf"
+set out "spectra_FMESH_BP1.pdf"
 EOF1
 
 
